@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: theme.spacing(3),
   },
+  // eslint-disable-next-line
   layout: {
     marginLeft: "auto",
     marginRight: "auto",
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 const CreateCourse = () => {
   const auth = useContext(AuthContext);
   const classes = useStyles();
-  const { isLoading, error, sendRequest, errorPopupCloser } = useHttpClient();
+  const {  error, sendRequest, errorPopupCloser } = useHttpClient();
   const [msg, setMsg] = useState();
   const [type, setType] = useState("free");
   const [values, setValues] = useState({
@@ -197,7 +198,7 @@ const CreateCourse = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              {type == "paid" && (
+              {type === "paid" && (
                 <Grid item xs={12}>
                   <TextField
                     required

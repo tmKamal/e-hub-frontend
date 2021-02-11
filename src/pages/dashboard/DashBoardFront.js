@@ -8,8 +8,7 @@ import MenuBtn from "../../components/menu-btn/MenuBtn";
 const useStyles = makeStyles((theme) => ({
   layout: {
     width: "auto",
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
+    
     marginTop: theme.spacing(0),
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
       width: 600,
@@ -60,14 +59,14 @@ const DashBoardFront = () => {
             <MenuBtn
               url={"/view-courses"}
               name="View Courses"
-              image="teacher"
+              image="view"
             ></MenuBtn>
           </Grid>
           <Grid item xs={12} md={6} lg={6}>
             <MenuBtn
               url={"/create-course"}
               name="Create Courses"
-              image="student"
+              image="add"
             ></MenuBtn>
           </Grid>
         </Grid>

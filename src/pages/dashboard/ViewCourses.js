@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import {
     Grid,
     TableContainer,
@@ -24,6 +24,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { green, red } from '@material-ui/core/colors';
 import { Link } from 'react-router-dom';
 import { useHttpClient } from "../../hooks/http-hook";
+import { AuthContext } from '../../context/auth-context';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ViewCourses = () => {
     const classes = useStyles();
+    const auth = useContext(AuthContext);
     const [loadedCourses, setLoadedCourses] = useState();
     const { isLoading,  sendRequest} = useHttpClient();
     const [deleteId, setDeleteId] = useState();
@@ -57,12 +59,13 @@ const ViewCourses = () => {
             try {
                 setLoadedCourses(
                     await sendRequest(
-                        `${process.env.REACT_APP_BACKEND_API}/api/course/get-courses-by-author/6023eba5577c6f30088152ca`
+                        `${process.env.REACT_APP_BACKEND_API}/api/course/get-courses-by-author/${auth.user._id}`
                     )
                 );
             } catch (err) {}
         };
         fetchingCourses();
+        // eslint-disable-next-line
     }, [sendRequest, reload]);
 
     const deleteDialogOpener = (id) => {

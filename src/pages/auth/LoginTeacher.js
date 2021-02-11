@@ -17,19 +17,9 @@ import { AuthContext } from "../../context/auth-context";
 
 import loginImage from "../../assets/images/login.jpg";
 import { Alert, AlertTitle } from "@material-ui/lab";
+import Copyrights from "../../components/shared/Copyrights";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Sllit AF Exam End
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -167,7 +157,7 @@ export default function LoginTeacher() {
             )}
 
             <Box mt={5}>
-              <Copyright />
+              <Copyrights></Copyrights>
             </Box>
           </form>
         </div>

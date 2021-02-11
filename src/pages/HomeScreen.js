@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from "react";
-import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
-import CameraIcon from "@material-ui/icons/PhotoCamera";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
 import { useHttpClient } from "../hooks/http-hook";
 import Copyrights from "../components/shared/Copyrights";
 import { Avatar, Chip } from "@material-ui/core";
@@ -49,11 +45,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-export default function Album() {
+export default function HomeScreen() {
   const classes = useStyles();
-  const { isLoading, error, sendRequest, errorPopupCloser } = useHttpClient();
+  const { sendRequest } = useHttpClient();
   const [courseData, setCourseData] = useState([]);
 
   useEffect(() => {
@@ -71,6 +65,7 @@ export default function Album() {
       }
     };
     fetchCourses();
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -96,9 +91,8 @@ export default function Album() {
               color="textSecondary"
               paragraph
             >
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
+              Sri lanka's best online platform for e-learning. Here you can find
+              valuable courses from top rated lecturers and teachers.
             </Typography>
           </Container>
         </div>
@@ -110,7 +104,7 @@ export default function Album() {
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
+                    image={card.featuredImage}
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
@@ -120,9 +114,21 @@ export default function Album() {
                     <Typography>{card.description}</Typography>
                   </CardContent>
                   <CardActions>
-                    <Chip avatar={<Avatar>$</Avatar>} label="Clickable" />
+                    {card.price !== 0 ? (
+                      <Chip
+                        avatar={<Avatar>Rs.</Avatar>}
+                        color="primary"
+                        label={card.price + "/="}
+                      />
+                    ) : (
+                      <Chip
+                        avatar={<Avatar>$</Avatar>}
+                        color="secondary"
+                        label="Free"
+                      />
+                    )}
                     <Button size="small" color="primary">
-                      Edit
+                      Enroll
                     </Button>
                   </CardActions>
                 </Card>
@@ -139,7 +145,7 @@ export default function Album() {
           color="textSecondary"
           component="p"
         >
-          Education is the key to success!
+          Amazon.com Never stop learning because life never stops teaching
         </Typography>
         <Copyrights></Copyrights>
       </footer>

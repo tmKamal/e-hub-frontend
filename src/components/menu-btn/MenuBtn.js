@@ -7,10 +7,11 @@ import CardMedia from "@material-ui/core/CardMedia";
 
 import Typography from "@material-ui/core/Typography";
 import { useHistory } from "react-router-dom";
-import busImage from "../../assets/images/bus.png";
-import pHistoryImage from "../../assets/images/payment-history.png";
-import paymentImage from "../../assets/images/payment.png";
-import journeyImage from "../../assets/images/joourney1.jpg";
+import pHistoryImage from "../../assets/images/teacher.png";
+import paymentImage from "../../assets/images/student.png";
+import journeyImage from "../../assets/images/payment.png";
+import addImage from "../../assets/images/add.png"
+import viewImage from "../../assets/images/view.png"
 
 
 
@@ -45,8 +46,12 @@ const MenuBtn = (props) => {
               ? paymentImage
               : props.image === "teacher"
               ? pHistoryImage
+              : props.image === "view"
+              ? viewImage
+              : props.image === "add"
+              ? addImage
               : props.image === "other"
-              ? busImage
+              ? paymentImage
               : journeyImage
           }
           title="Contemplative Reptile"

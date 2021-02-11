@@ -3,7 +3,6 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -15,19 +14,7 @@ import { useHttpClient } from "../../hooks/http-hook";
 import signUpImage from "../../assets/images/signup.jpg";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import { AuthContext } from "../../context/auth-context";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Sllit Logix - (WE24)
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import Copyrights from "../../components/shared/Copyrights";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -167,7 +154,7 @@ export default function SignUpTeacher() {
             )}
 
             <Box mt={5}>
-              <Copyright />
+             <Copyrights></Copyrights>
             </Box>
           </form>
         </div>

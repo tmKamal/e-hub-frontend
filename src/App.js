@@ -64,32 +64,25 @@ export default function App() {
     }
     setIsLoading(false);
     console.log(user);
+    // eslint-disable-next-line
   }, [login]);
 
   let reactRoutes;
-  if (token && !isLoading && user.role == "Student") {
+  if (token && !isLoading && user && user.role === "Student") {
     reactRoutes = (
       <React.Fragment>
         <Route path="/">
           <NavBar></NavBar>
         </Route>
-
         <Switch>
           <Route path="/" exact>
             <HomeScreen></HomeScreen>
           </Route>
-          {/* <Route path="/make-payments" exact>
-            <MakePayment></MakePayment>
-          </Route> */}
-
-          {/*  <Route path="/logout" exact>
-            <Logout></Logout>
-          </Route> */}
           <Redirect to="/" />
         </Switch>
       </React.Fragment>
     );
-  } else if (token && !isLoading && user.role == "Teacher") {
+  } else if (token && !isLoading && user && user.role === "Teacher") {
     reactRoutes = (
       <React.Fragment>
         <Route path="/">
@@ -109,13 +102,6 @@ export default function App() {
           <Route path="/update-course/:cid" exact>
             <EditCourse></EditCourse>
           </Route>
-          {/* <Route path="/make-payments" exact>
-            <MakePayment></MakePayment>
-          </Route> */}
-
-          {/*  <Route path="/logout" exact>
-            <Logout></Logout>
-          </Route> */}
           <Redirect to="/dashboard" />
         </Switch>
       </React.Fragment>
@@ -127,7 +113,7 @@ export default function App() {
           <NavBar></NavBar>
         </Route>
         <Switch>
-        <Route path="/" exact>
+          <Route path="/" exact>
             <HomeScreen></HomeScreen>
           </Route>
           <Route path="/login-as" exact>
@@ -145,7 +131,7 @@ export default function App() {
           <Route path="/signup-student" exact>
             <SignUpStudent></SignUpStudent>
           </Route>
-          
+          <Redirect to="/" />
         </Switch>
       </React.Fragment>
     );

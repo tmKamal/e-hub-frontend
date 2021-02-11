@@ -1,4 +1,4 @@
-import React, { useState, useContext,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   CssBaseline,
   Paper,
@@ -7,14 +7,10 @@ import {
   TextField,
   Button,
   makeStyles,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
 } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import { useHttpClient } from "../../hooks/http-hook";
-import { AuthContext } from "../../context/auth-context";
+
 import { useParams } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -48,20 +44,20 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: theme.spacing(3),
   },
-  layout: {
+  /* layout: {
     marginLeft: "auto",
     marginRight: "auto",
-  },
+  }, */
 }));
 
 const EditCourse = () => {
   const courseId = useParams().cid;
-  
   const classes = useStyles();
+  // eslint-disable-next-line
   const [reload, setReload] = useState();
-  const { isLoading, error, sendRequest, errorPopupCloser } = useHttpClient();
+  const { error, sendRequest, errorPopupCloser } = useHttpClient();
   const [msg, setMsg] = useState();
-  const [type, setType] = useState("free");
+  
   const [loadedCourse,setLoadedCourse]=useState();
   const [values, setValues] = useState({
     name: "",
@@ -81,6 +77,7 @@ const EditCourse = () => {
         setLoadedCourse(fetchedCourse.course);
     };
     fetchCourse();
+    // eslint-disable-next-line
 }, [sendRequest, reload]);
 
 useEffect(() => {
@@ -92,6 +89,7 @@ useEffect(() => {
             price: loadedCourse.price,
         });
     }
+    // eslint-disable-next-line
 }, [loadedCourse]);
 
 
@@ -100,9 +98,7 @@ useEffect(() => {
     setMsg(null);
     errorPopupCloser();
   };
-  const handleChange = (event) => {
-    setType(event.target.value);
-  };
+ 
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -188,28 +184,8 @@ useEffect(() => {
                 />
               </Grid>
               
-              <Grid item xs={12}>
-                <FormControl
-                  fullWidth
-                  variant="outlined"
-                  className={classes.formControl}
-                >
-                  <InputLabel id="demo-simple-select-outlined-label">
-                    Course Type
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    value={type}
-                    onChange={handleChange}
-                    label="Type"
-                  >
-                    <MenuItem value={"free"}>Free</MenuItem>
-                    <MenuItem value={"paid"}>Paid</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              {type == "paid" && (
+              
+              
                 <Grid item xs={12}>
                   <TextField
                     required
@@ -223,7 +199,7 @@ useEffect(() => {
                     fullWidth
                   />
                 </Grid>
-              )}
+              
 
               {error && (
                 <Grid item xs={12}>
