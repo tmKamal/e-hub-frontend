@@ -16,7 +16,8 @@ import {
     DialogTitle,
     DialogContent,
     DialogContentText,
-    DialogActions
+    DialogActions,
+    Container
 } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import CreateIcon from '@material-ui/icons/Create';
@@ -99,7 +100,8 @@ const ViewCourses = () => {
     };
 
     return (
-        <Grid container spacing={3}>
+        <Container>
+            <Grid container spacing={3}>
             <Grid item xs={12}>
                 <Typography
                     variant='h5'
@@ -247,6 +249,8 @@ const ViewCourses = () => {
                 </DialogActions>
             </Dialog>
         </Grid>
+        </Container>
+        
     );
 };
 export default ViewCourses;

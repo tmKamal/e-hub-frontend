@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the snapshot 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root makeStyles-root-1 MuiPaper-elevation1 MuiPaper-rounded"
+  data-testid="mbtn"
+>
+  <button
+    className="MuiButtonBase-root MuiCardActionArea-root"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <div
+      className="MuiCardMedia-root makeStyles-media-2"
+      style={
+        Object {
+          "backgroundImage": "url(\\"payment.png\\")",
+        }
+      }
+      title="Contemplative Reptile"
+    />
+    <div
+      className="MuiCardContent-root"
+    >
+      <h2
+        className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+        test 02
+      </h2>
+    </div>
+    <span
+      className="MuiCardActionArea-focusHighlight"
+    />
+  </button>
+</div>
+`;
